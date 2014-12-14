@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>
+      Построение ортогональной и перспективной проекций трехмерного объекта
+    </title>
+    <meta charset="utf-8">
+
+<!--     <script type="text/javascript" src="jquery-2.1.0.min.js"></script> -->
+    <script type="text/javascript" src="jquery-2.1.0.js"></script>
+
+    <script type="text/javascript" src="jquery-ui-1.10.4.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.10.4.custom.min.css">
+
+<!--     <script type="text/javascript" src="jcanvas.min.js"></script> -->
+    <script type="text/javascript" src="jcanvas.js"></script>
+
+<!--     <script type="text/javascript" src="ortho.js"></script> -->
+    <script type="text/javascript" src="coffee-script.js"></script>
+    <script type="text/coffeescript" src="ortho.coffee"></script>
+
+    <link rel="stylesheet" type="text/css" href="ortho.css">
+  </head>
+  <body>
+    <div id="errors"></div>
+    <div id="container">
+      <div id="coffee-error-log"></div>
+      <div id="heading">
+        <h1 id="title">Построение ортогональной и перспективной проекций трехмерного объекта</h1>
+        <div id="info-container">Гейнц Роман — Рязань 2014</div>
+      </div>
+      <br>
+      <h2>Ортогональная проекция октаэдра</h2>
+      <div id="ortho-container" class="canvas-container">
+        <canvas id="ortho-canvas" width='800' height='600'></canvas>
+      </div>
+      <br>
+      <h2>Перспективная проекция октаэдра</h2>
+      <div id="persp-container" class="canvas-container">
+        <canvas id="persp-canvas" width='800' height='600'></canvas>
+      </div>
+      <br>
+      <h2>Ортогональная проекция куба</h2>
+      <div id="ortho-cube-container" class="canvas-container">
+        <canvas id="ortho-cube-canvas" width='800' height='600'></canvas>
+      </div>
+      <br>
+      <h2>Перспективная проекция куба</h2>
+      <div id="persp-cube-container" class="canvas-container">
+        <canvas id="persp-cube-canvas" width='800' height='600'></canvas>
+      </div>
+    </div>
+  </body>
+</html>

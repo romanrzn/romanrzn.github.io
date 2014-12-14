@@ -1,0 +1,171 @@
+<html>
+  <head>
+    <title>
+      Калькулятор транспортных расходов
+    </title>
+    <meta charset="utf-8">
+<!--     <script type="text/javascript" src="jquery-2.1.0.min.js"></script> -->
+    <script type="text/javascript" src="jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.10.4.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.10.4.custom.min.css">
+<!--     <script type="text/javascript" src="jcanvas.min.js"></script> -->
+    <script type="text/javascript" src="jcanvas.js"></script>
+    <script type="text/javascript" src="coffee-script.js"></script>
+    <script type="text/coffeescript" src="calc.coffee"></script>
+<!--     <script type="text/javascript" src="calc.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="calc.css">
+  </head>
+  <body>
+    <div id="errors"></div>
+    <div id="container">
+      <div id="coffee-error-log"></div>
+      <div id="heading">
+        <h1 id="title">Калькулятор транспортных расходов</h1>
+        <div id="info-container">Гейнц Роман — Рязань 2014</div>
+      </div>
+      <div id="map-container">
+        <canvas id="map-canvas" width='800' height='600'></canvas>
+        <div id="help">
+          Клик на складе — создать марштур<br>
+          Двойной клик — создать/удалить магазин<br>
+          Магазины можно перетаскивать<br>
+        </div>
+      </div>
+      <div id="tabs">
+        <ol>
+        <li><a href="#tabs-config">Параметры</a></li>
+        <li><a href="#tabs-markets">Магазины</a></li>
+        <li><a href="#tabs-paths">Маршруты</a></li>
+        <li><a href="#tabs-cars">Машины</a></li>
+        <li><a href="#tabs-result">Результат вычислений</a></li>
+        </ol>
+        <div id="tabs-config">
+          Размер карты:
+          <input type="text" id="map-real-width" wrapme="spinner" suffix="м" default="8000"> ×
+          <input type="text" id="map-real-height" wrapme="spinner" suffix="м" default="6000">
+          <br>
+          Средняя скорость:
+          <input type="text" id="speed" wrapme="spinner" suffix="км/ч" default="40">
+          <br>
+          Время разгрузки:
+          <input type="text" id="unload-speed" wrapme="spinner" suffix="сек/шт" default="30">
+          <br>
+          Время оформления документов:
+          <input type="text" id="paper-speed" wrapme="spinner" suffix="мин" default="15">
+          <br>
+          Рабочее время водителя:
+          <input type="text" id="driver-work-time" wrapme="spinner" suffix="час" default="8">
+          <br>
+          Максимальное время работы водителя:
+          <input type="text" id="driver-max-work-time" wrapme="spinner" suffix="час" default="12">
+          <br>
+          Сверхурочные водителя:
+          <input type="text" id="driver-overtime" wrapme="spinner" suffix="руб/час" default="300" width_="120">
+          <br>
+          Условно-постоянные расходы:
+          <ul>
+            <li>
+              на собственный транспорт:
+              <input type="text" id="daily-own" wrapme="spinner" prop="daily" suffix="руб/день" default="1000" width_="140">
+            </li>
+            <li>
+              на наемный транспорт:
+              <input type="text" id="daily-hired" wrapme="spinner" suffix="руб/день" default="1500" width_="140">
+            </li>
+          </ul>
+          Стоимость километра собственного транспорта:
+          <input type="text" id="km-own" wrapme="spinner" suffix="руб/км" default="10">
+          <br>
+          Стоимость километра наемного транспорт:
+          <input type="text" id="km-hired" wrapme="spinner" suffix="руб/км" default="30">
+          <br>
+          Услуги экспедитора:
+          <input type="text" id="expeditor" wrapme="spinner" suffix="руб/маш" default="600" width_="120">
+          <br>
+          Минимальное число коробок:
+          <input type="text" id="min-units" wrapme="spinner" suffix="шт" default="90">
+          <br>
+          Штраф за недогруз:
+          <input type="text" id="min-units-penalty" wrapme="spinner" suffix="руб/шт" default="50">
+          <br>
+          Минимальный рабочий день:
+          <input type="text" id="min-work-time" wrapme="spinner" suffix="час" default="6">
+          <br>
+          Штраф за неполный рабочий день:
+          <ul>
+            <li>
+              для собственного транспорта:
+              <input type="text" id="min-own-work-time-penalty" wrapme="spinner" suffix="руб" default="300">
+            </li>
+            <li>
+              для наемного транспорта:
+              <input type="text" id="min-hired-work-time-penalty" wrapme="spinner" suffix="руб" default="500">
+            </li>
+          </ul>
+          Штраф за просроченную доставку:
+          <input type="text" id="delay-penalty" wrapme="spinner" suffix="руб/шт" default="100" width_="120">
+          <br>
+          <button id="config-apply">Применить</button>
+        </div>
+        <div id="tabs-markets">
+          <table id="markets-table">
+            <tbody>
+              <tr>
+                <th>Номер магазина</th>
+                <th>Требуется груза</th>
+                <th><!-- Удалить --></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="tabs-paths">
+          <table id="paths-table">
+            <tbody>
+              <tr>
+                <th>Номер маршрута</th>
+                <th>Всего магазинов</th>
+                <th>Всего коробок</th>
+                <th><!-- Удалить --></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="tabs-cars">
+          <table id="cars-table">
+            <tbody>
+              <tr>
+                <th>Номер машины</th>
+                <th>Принадлежность</th>
+                <th>Ёмкость</th>
+                <th>Маршруты</th>
+                <th><!-- Удалить --></th>
+              </tr>
+            </tbody>
+          </table>
+          <button id="car-add">Добавить машину</button>
+        </div>
+        <div id="tabs-result">
+          <table id="result-table">
+            <tbody>
+              <tr><th><p>Номер машины</p></th></tr>
+              <tr><th><p>Принадлежность</p></th></tr>
+              <tr><th><p>Выполненные за день маршруты</p></th></tr>
+              <tr><th><p>Время работы</p></th></tr>
+              <tr><th><p>Перевезено груза за день</p></th></tr>
+              <tr><th><p>Пробег за день</p></th></tr>
+              <tr><th><p>Плата за пробег</p></th></tr>
+              <tr><th><p>Условно-постоянные расходы</p></th></tr>
+              <tr><th><p>Сверхурочные водителя</p></th></tr>
+              <tr><th><p>Штраф за недогруз</p></th></tr>
+              <tr><th><p>Штраф за неполный рабочий день</p></th></tr>
+              <tr><th><p>Расходы на экспедитора</p></th></tr>
+              <tr><th><p>Всего плата за автомобиль</p></th></tr>
+            </tbody>
+          </table>
+          <div id="total-total"></div>
+          <div id="calculate">Пересчитать</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
