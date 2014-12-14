@@ -1,0 +1,8 @@
+@import '../../style/common.scss';
+
+#code-table {
+  border-collapse: collapse;
+  /*  @include table-inner-borders; */
+  @include table-zebra;
+  @include table-header-spacing;
+}

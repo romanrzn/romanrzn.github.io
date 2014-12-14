@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "main.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "rsreu/inf/main.coffee"
+  ],
+  "names": [],
+  "mappings": ";AACA,CAAA,CAAE,SAAA,GAAA;SACA,CAAA,CAAE,UAAF,CAAa,CAAC,MAAd,CAAA,EADA;AAAA,CAAF,CAAA,CAAA"
+}

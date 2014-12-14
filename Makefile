@@ -11,7 +11,7 @@ gen: coffee sass
 
 coffee:
 	@echo "Compiling coffee to js..."
-	@coffee -c --bare $(coffee_files)
+	@coffee -mc --bare $(coffee_files)
 
 sass:
 	@echo "Compiling sass to css..."

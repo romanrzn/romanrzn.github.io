@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>
+      Модели дискретных каналов — Лабораторная работа 3 — Прикладная теория информации
+    </title>
+    <meta charset="utf-8">
+
+<!--     <script type="text/javascript" src="../../../lib/jquery-2.1.0.min.js"></script> -->
+    <script type="text/javascript" src="../../../lib/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="../../../lib/cytoscape.min.js"></script>
+
+    <script type="text/javascript" src="../../../lib/jquery-ui-1.10.4.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../lib/jquery-ui-1.10.4.custom.min.css">
+
+<!--     <script type="text/javascript" src="../../../lib/jcanvas.min.js"></script> -->
+<!--     <script type="text/javascript" src="../../../lib/jcanvas.js"></script> -->
+
+    <script type="text/javascript" src="../../../lib/sprintf.min.js"></script>
+
+    <script type="text/javascript" src="../../../lib/coffee-script.js"></script>
+
+    <script type="text/javascript" src="../../lib/config.js"></script>
+    <script type="text/javascript" src="../../lib/stuff.js"></script>
+
+    <script type="text/javascript" src="main.js"></script>
+<!--     <script type="text/coffeescript" src="main.coffee"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="container">
+      <div id="config">
+      </div>
+      <br>
+      <button id="apply-config">Провести моделирование</button>
+      <hr>
+      <div id="result">
+        <div>
+          <span>
+            Инетрвальное представление последовательности ошибок (длины безошибочных интервалов):
+          </span>
+          <textarea id="error-intervals"></textarea>
+        </div>
+        <div>
+          <span>
+            Коэффициент ошибок:
+          </span>
+          <span id="error-coeff"></span>
+        </div>
+        <div>
+          <span>
+            Коэффициент группирования:
+          </span>
+          <span id="grouping-coeff"></span>
+        </div>
+        <div>
+          <span>
+            Инетрвальное представление последовательности искаженных блоков:
+          </span>
+          <textarea id="block-intervals"></textarea>
+        </div>
+        <div>
+          <span>
+            Коэффициент ошибок по блокам:
+          </span>
+          <span id="block-error-coeff"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

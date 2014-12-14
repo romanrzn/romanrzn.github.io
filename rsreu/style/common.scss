@@ -1,0 +1,98 @@
+
+$page-width: 800px;
+
+$text-color: rgb(63, 55, 49);
+$bg-color: #faf8ef;
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin float-align($lr) {
+  float: $lr;
+  text-align: $lr;
+}
+
+@mixin table-inner-borders {
+  & {
+      border-collapse: collapse;
+  }
+  & td, & th {
+      border: 1px solid $text-color;
+  }
+  & tr:first-child th {
+      border-top: 0;
+  }
+  & tr:last-child td {
+      border-bottom: 0;
+  }
+  & tr td:first-child,
+  & tr th:first-child {
+      border-left: 0;
+  }
+  & tr td:last-child,
+  & tr th:last-child {
+      border-right: 0;
+  }
+}
+
+@mixin table-zebra {
+  & tr:nth-child(even) {
+    background: #EDE0C8;
+  }
+}
+
+@mixin table-header-spacing {
+  & th {
+    padding: 0 20px 0 0;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+
+  background: $bg-color;
+  color: $text-color;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+}
+
+ul, ol {
+  margin: 0;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: #CDC3B7;
+}
+
+.ui-widget {
+  font-size: 1em !important;
+}
+.ui-button-text {
+  padding: 0.2em 0.4em !important;
+}
+
+#container {
+  width: $page-width;
+  margin: 0 auto;
+}
+
+#heading {
+  @include clearfix;
+}
+
+#title {
+  @include float-align(left);
+  font-size: 2.6em;
+  font-weight: bold;
+  margin: 0;
+  display: block;
+  width: $page-width;
+}

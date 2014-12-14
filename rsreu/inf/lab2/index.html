@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <title>
+      Изучение методов рационального кодирования — Лабораторная работа 2 — Прикладная теория информации
+    </title>
+    <meta charset="utf-8">
+
+<!--     <script type="text/javascript" src="../../../lib/jquery-2.1.0.min.js"></script> -->
+    <script type="text/javascript" src="../../../lib/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="../../../lib/cytoscape.min.js"></script>
+
+    <script type="text/javascript" src="../../../lib/jquery-ui-1.10.4.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../lib/jquery-ui-1.10.4.custom.min.css">
+
+<!--     <script type="text/javascript" src="../../../lib/jcanvas.min.js"></script> -->
+<!--     <script type="text/javascript" src="../../../lib/jcanvas.js"></script> -->
+
+    <script type="text/javascript" src="../../../lib/sprintf.min.js"></script>
+
+    <script type="text/javascript" src="../../../lib/coffee-script.js"></script>
+
+    <script type="text/javascript" src="../../lib/config.js"></script>
+    <script type="text/javascript" src="../../lib/stuff.js"></script>
+
+    <script type="text/javascript" src="main.js"></script>
+<!--     <script type="text/coffeescript" src="main.coffee"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="container">
+      <div id="heading">
+        <h1 id="title">Изучение методов рационального кодирования</h1>
+        <div id="info-container">Гейнц Роман — Рязань 2014</div>
+      </div>
+      <hr>
+      <div id="config">
+      </div>
+      <button id="apply-config">Кодировать</button>
+      <hr>
+      <div id="result">
+        <div id="tree-container">
+          <span>
+            Кодовое дерево:
+          </span>
+          <div id="tree">
+          </div>
+        </div>
+        <div id="sequence-container">
+          <span>
+            Исходная последовательность:
+          </span>
+          <textarea id="sequence"></textarea>
+        </div>
+        <div id="code-container">
+          <span>
+            Последовательность кодов:
+          </span>
+          <textarea id="code"></textarea>
+        </div>
+        <div id="decoded-container">
+          <span>
+            Декодированная последовательность:
+          </span>
+          <textarea id="decoded"></textarea>
+        </div>
+        <div id="stats-table">
+          <div>
+            <span>
+              Оценка средней длительности:
+            </span>
+            <span id="avg-length-est"></span>
+          </div>
+          <div>
+            <span>
+              Рассчитанная средняя длительность:
+            </span>
+            <span id="avg-length"></span>
+          </div>
+          <div>
+            <span>
+              Относительная энтропия:
+            </span>
+            <span id="relative-entropy"></span>
+          </div>
+          <div>
+            <span>
+              Коэффициент избыточности:
+            </span>
+            <span id="redundancy"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
