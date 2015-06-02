@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>
+      Композиция нечетких отношений — Системы искусственного интеллекта
+    </title>
+    <meta charset="utf-8">
+
+<!--     <script type="text/javascript" src="../../../lib/jquery-2.1.0.min.js"></script> -->
+    <script type="text/javascript" src="../../../lib/jquery-2.1.0.js"></script>
+
+    <script type="text/javascript" src="../../../lib/jquery-ui-1.10.4.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../lib/jquery-ui-1.10.4.custom.min.css">
+
+<!--     <script type="text/javascript" src="../../../lib/jcanvas.min.js"></script> -->
+<!--     <script type="text/javascript" src="../../../lib/jcanvas.js"></script> -->
+
+    <script type="text/javascript" src="../../../lib/knockout-3.3.0.debug.js"></script>
+
+    <script type="text/javascript" src="../../lib/stuff.js"></script>
+
+    <script type="text/javascript" src="../../../lib/coffee-script.js"></script>
+    <script type="text/coffeescript" src="main.coffee"></script>
+
+<!--     <script type="text/javascript" src="main.js"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="container">
+      <div id="heading">
+        <h1 id="title">Композиция нечетких отношений</h1>
+        <div id="info-container">Гейнц Роман — Рязань 2015</div>
+      </div>
+      <hr>
+      <div id="view">
+        <div>
+          <div data-bind="foreach: rels">
+            <div>
+              <table>
+                <tbody data-bind="foreach: rows">
+                  <tr data-bind="foreach: cells">
+                    <td>
+                      <input style="max-width: 60px;" type="text" data-bind="value: value">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <a href="#" data-bind="click: addRow" >+ строка</a><br>
+              <a href="#" data-bind="click: delRow" >- строка</a><br>
+              <a href="#" data-bind="click: addCol" >+ столбец</a><br>
+              <a href="#" data-bind="click: delCol" >- столбец</a><br>
+            </div>
+            <hr>
+          </div>
+          <a href="#" data-bind="click: addRel">+ отношение</a><br>
+          <a href="#" data-bind="click: delRel">- отношение</a><br>
+        </div>
+
+        <a href="#" data-bind="click: calc">Вычислить</a><br>
+
+        <table data-bind="with: result">
+          <tbody data-bind="foreach: rows">
+            <tr data-bind="foreach: cells">
+              <td>
+                <input style="max-width: 60px;" type="text" data-bind="value: value, disable: true">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
